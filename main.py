@@ -2,8 +2,15 @@ from fastapi import FastAPI, Body, Depends
 from app.model import *
 from app.auth.handler import signJWT
 from app.auth.bearer import Bearer
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=['*']
+)
+
 users = []
 posts = [
     {
